@@ -4,10 +4,11 @@ import { MovieList } from "../../components/MovieList/MovieList";
 import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
-  const [film, setfilmList] = useState(null);
+  const [film, setfilmList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query");
   useEffect(() => {
+    if (!query) return;
     const getData = async () => {
       const data = await getFilmList(query);
       setfilmList(data);
@@ -22,7 +23,7 @@ const MoviesPage = () => {
       return;
     }
   };
-
+  console.log(film);
   return (
     <>
       <form onSubmit={onSubmit}>
