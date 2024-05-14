@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { getFilmList } from "../../service/service";
 import { MovieList } from "../../components/MovieList/MovieList";
+import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
-  const [query, setQuery] = useState("");
   const [film, setfilmList] = useState(null);
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query");
   useEffect(() => {
     const getData = async () => {
       const data = await getFilmList(query);
@@ -15,7 +16,7 @@ const MoviesPage = () => {
   }, [query]);
   const onSubmit = (event) => {
     event.preventDefault();
-    setQuery(event.target.search.value);
+    setSearchParams({ query: event.target.search.value });
     if (event.target.search.value === "") {
       alert("Введіть текст!");
       return;

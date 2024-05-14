@@ -19,8 +19,8 @@ const ErrorMassage = lazy(() =>
 function App() {
   return (
     <>
-      <Navigation fallvack={<div>Loading page...</div>} />
       <Suspense>
+        <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
