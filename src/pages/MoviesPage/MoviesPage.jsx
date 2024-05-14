@@ -11,7 +11,8 @@ const MoviesPage = () => {
     if (!query) return;
     const getData = async () => {
       const data = await getFilmList(query);
-      setfilmList(data);
+      setfilmList(data.results);
+      console.log(data);
     };
     getData();
   }, [query]);
@@ -36,7 +37,7 @@ const MoviesPage = () => {
         />
         <button type="submit">Search</button>
       </form>
-      {film && <MovieList movies={film.results} />}
+      {film.length > 0 && <MovieList movies={film} />}
     </>
   );
 };
