@@ -1,0 +1,10 @@
+.revItem {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
+.revList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
